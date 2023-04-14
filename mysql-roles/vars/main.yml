@@ -1,0 +1,14 @@
+---
+# vars file for roles
+#
+# MySQL credentials
+dbname: blastdb
+dbuser: root 
+dbpass: pass123
+login_user: root
+login_password: pass123XYZ
+
+# MySQL host
+dbhost: localhost
+
+

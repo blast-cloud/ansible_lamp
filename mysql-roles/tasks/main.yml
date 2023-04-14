@@ -1,0 +1,76 @@
+---
+# tasks file for roles
+- name: Install the MySQL packages
+  apt:
+    name: 
+    - mysql-server
+    - mysql-client-core-8.0
+    - libmysqlclient-dev
+    - mysql-common
+
+
+- name: Ensure MySQL is running and starts on boot
+  service:
+    name: mysql
+    state: started
+    enabled: true
+
+
+
+- name: Copy .my.cnf file with root password credentials
+  copy:
+    src: my.cnf.j2
+    dest: /etc/mysql/my.cnf
+    owner: root
+    mode: '0600'
+
+
+- name: Write root login credentials
+  template:
+    src: my.cnf.j2
+    dest: /etc/mysql/my.cnf
+    owner: root
+    group: root
+    mode: 0600
+  notify: restart mysql 
+
+
+- name: Create database {{ dbname }}
+  mysql_db:
+    name: "{{ dbname }}"
+    login_user: "{{ dbuser }}"
+    login_password: "{{ dbpass }}"
+    state: present
+
+
+
+- name: Grant privilege on "{{ dbname }}" to "{{ dbuser }}"
+  mysql_user:
+    name: "{{ item.user }}"
+    host: "{{ item.host }}"
+    password: "{{ dbpass }}"
+    login_user: "{{ dbuser }}"
+    login_password: "{{ dbpass }}"
+    priv: "{{ dbname }}.*:ALL"
+    state: present
+  with_items:
+    - { user: "{{ dbuser }}", host: localhost }
+    - { user: "{{ dbuser }}", host: 127.0.0.1 }
+  delegate_to: "{{ dbhost }}"
+  run_once: true
+
+- name: Ensure anonymous users are not in the database
+  mysql_user:
+    name: ''
+    host: "{{ item }}"
+    state: absent
+  with_items:
+    - 127.0.0.1
+    - localhost
+
+- name: Remove the test database
+  mysql_db:
+    name: test
+    state: absent
+    
+    

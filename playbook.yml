@@ -1,0 +1,117 @@
+---
+
+- name: Deploy LMS application
+  hosts: target
+  become: yes
+  roles:
+    - apache2-roles
+  tasks:
+
+ #install webmin
+ 
+    - name: Add Webmin repository key
+      apt_key:
+        url: http://www.webmin.com/jcameron-key.asc
+        state: present
+
+    - name: update APT repo
+      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+    - name: Add Webmin repository
+      command: >
+           sh -c 'echo "deb https://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list' && wget -qO - http://www.webmin.com/jcameron-key.asc | apt-key add -
+
+    - name: update APT repo
+      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+
+    - name: Install Webmin
+      apt:
+        name: webmin
+        state: present
+
+
+
+
+
+ #install required PHP version 
+ 
+    - name: Install PHP 7.4 and common extensions
+      apt:
+        name:
+          - php7.4
+          - php7.4-cli
+          - php7.4-common
+          - php7.4-curl
+          - php7.4-gd
+          - php7.4-intl
+          - php7.4-json
+          - php7.4-mbstring
+          - php7.4-mysql
+          - php7.4-xml
+          - php7.4-fpm
+          - php7.4-mysql
+          - php7.4-bcmath
+          - php7.4-intl
+        state: present
+ 
+
+
+
+
+# enable php config
+    - name: enable mode
+      command: sudo a2enmod proxy_fcgi setenvif 
+    
+    - name: enable config
+      command: sudo a2enconf php7.4-fpm
+
+    - name: restart apache2 
+      service:
+        name: apache2
+        state: started 
+
+
+
+
+
+
+# after running composer update, zip folder
+
+    - name: copy application to remote server 
+      copy:
+        src: ~/hasob/vanilla-lms.zip
+        dest: /var/www/
+
+
+#unzip vanilla-lms
+    - name: unzip application
+      unarchive:
+        src: /var/www/vanilla-lms.zip
+        dest: /var/www/
+        remote_src: yes
+
+
+    - name: change file ownership , group and permissions
+      file:
+        path: /var/www/vanilla-lms/storage*
+        owner: root
+        group: root
+        mode: '0777'
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
