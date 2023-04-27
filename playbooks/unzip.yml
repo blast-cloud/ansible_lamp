@@ -3,25 +3,41 @@
   hosts: target
   become: yes
   tasks: 
-    - name: unarchive a file on remote
+    - name: unarchive app dir on remote
       unarchive:
         src: /var/www/app.tar.gz 
-        dest: /var/www/
+        dest: /var/www/vanilla-lms/
         remote_src: yes
 
-    - name: unarchive a file on remote
+    - name: unarchive resources dir on remote
       unarchive:
         src: /var/www/resources.tar.gz
-        dest: /var/www/
+        dest: /var/www/vanilla-lms/
         remote_src: yes
 
 
-    - name: unarchive a file on remote
+    - name: unarchive routes dir on remote
       unarchive:
         src: /var/www/routes.tar.gz
-        dest: /var/www/
+        dest: /var/www/vanilla-lms/
         remote_src: yes
 
+    - name: change file permission and ownership for app dir
+      file:
+        path: /var/www/vanilla-lms/app
+        mode: "0777"
+        owner: root
 
+    - name: change file permission and ownership for resources dir
+      file:
+        path: /var/www/vanilla-lms/resources
+        mode: "0777"
+        owner: root
+
+     - name: change file permission and ownership for routes
+      file:
+        path: /var/www/vanilla-lms/routes
+        mode: "0777"
+        owner: root
 
 
