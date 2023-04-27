@@ -1,0 +1,27 @@
+---
+- name: extract file
+  hosts: target
+  become: yes
+  tasks: 
+    - name: unarchive a file on remote
+      unarchive:
+        src: /var/www/app.tar.gz 
+        dest: /var/www/
+        remote_src: yes
+
+    - name: unarchive a file on remote
+      unarchive:
+        src: /var/www/resources.tar.gz
+        dest: /var/www/
+        remote_src: yes
+
+
+    - name: unarchive a file on remote
+      unarchive:
+        src: /var/www/routes.tar.gz
+        dest: /var/www/
+        remote_src: yes
+
+
+
+
