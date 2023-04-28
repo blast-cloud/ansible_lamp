@@ -1,4 +1,0 @@
-[blastserver]
-
-target ansible_host=178.79.131.69 ansible_user=root ansible_ssh_pass=hc74f5Hl$F28RudYWH1&3aklu6s ansible_connection=ssh ansible_python_interpreter=/usr/bin/python3 
-
