@@ -5,6 +5,7 @@
   become: yes
   roles:
     - apache2-roles
+    - mysql-roles
   tasks:
 
  #install webmin
