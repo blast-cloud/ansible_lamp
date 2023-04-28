@@ -5,6 +5,7 @@
   become: yes
   roles:
     - apache2-roles
+    - mysql-roles
   tasks:
 
  #install webmin
@@ -76,7 +77,7 @@
 
 
 
-# after running composer update, zip folder
+# after running composer update on application, zip application directory
 
     - name: copy application to remote server 
       copy:
@@ -101,10 +102,29 @@
 
       
 
-
-
-
-
+    - name: change file ownership , group and permissions
+      file:
+        path: /var/www/vanilla-lms/bootstrap*
+        owner: root
+        group: root
+        mode: '0777'
+        
+        
+    
+    - name: change file ownership , group and permissions
+      file:
+        path: /var/www/vanilla-lms/resources*
+        owner: root
+        group: root
+        mode: '0777'
+        
+    
+    - name: change file ownership , group and permissions
+      file:
+        path: /var/www/vanilla-lms/public*
+        owner: root
+        group: root
+        mode: '0777'
 
 
 
