@@ -29,7 +29,7 @@ scp -r "$OUTPUT_TAR_DIR" root@212.111.41.185:/var/www/
 # scp -r "$OUTPUT_TAR_DIR" root@212.71.244.231:/var/www/
 
 # change directory 
-cd ~/etc/ansible/playbooks/
+cd /etc/ansible/playbooks/ecom_lib
 
 
 # Run the ansible playbook
