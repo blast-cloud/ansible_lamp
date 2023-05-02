@@ -1,0 +1,19 @@
+---
+- name: unarchiving ecommerce module directory on server
+  unarchive:
+    src: /var/www/ecommerce-lib.tar.gz 
+    dest: /var/www/tetfund-thesis-digitilization-portal/hasob/
+    remote_src: yes
+
+- name: changing file permission and ownership of directory
+  file:
+    path: /var/www/tetfund-thesis-digitilization-portal/hasob/hasob-ecommerce-lib*
+    mode: "0777"
+    owner: root
+
+- name: Delete the tar file
+  file:
+    path: /var/www/ecommerce-lib.tar.gz
+    state: absent
+
+

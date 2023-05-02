@@ -1,0 +1,26 @@
+---
+- name: Updating ecommerce-lib module
+  hosts: target
+  become: yes
+  tasks: 
+    - name: Check if teras server
+      stat:
+        path: /var/www/tetfund-thesis-digitilization-portal
+      register: folder_info
+
+    - name: Run tasks for server
+      include_role:
+        name: teras
+      when: folder_info.stat.exists
+
+
+
+    - name: Check if iterum server
+      stat:
+        path: /var/www/iterum-business-portal
+      register: folder_info
+
+    - name: Run tasks for server
+      include_role:
+        name: iterum
+      when: folder_info.stat.exists   
