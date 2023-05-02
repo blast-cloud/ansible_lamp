@@ -10,7 +10,7 @@ git pull
 cd ~/hasob/
 
 # Set the input file or directory and output tarball name
-INPUT_DIR="~/hasob/hasob-ecommerce-lib"
+INPUT_DIR="./hasob-ecommerce-lib"
 OUTPUT_TAR_DIR="ecommerce-lib.tar.gz"
 
 # Create the tar file
