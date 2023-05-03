@@ -1,5 +1,5 @@
 ---
-- name: unarchiving ecommerce module directory on server
+- name: unarchiving fc_module directory on server
   unarchive:
     src: /var/www//hasob-foundation-core-bs-5.tar.gz 
     dest: /var/www/tetfund-bi-portal/vendor/hasob/
