@@ -1,7 +1,7 @@
 ---
 - name: extract file
   hosts: target
-  become: yes
+  become: true
   tasks: 
     - name: unarchive app dir on remote
       unarchive:
@@ -34,7 +34,7 @@
         mode: "0777"
         owner: root
 
-     - name: change file permission and ownership for routes
+    - name: change file permission and ownership for routes
       file:
         path: /var/www/vanilla-lms/routes
         mode: "0777"
