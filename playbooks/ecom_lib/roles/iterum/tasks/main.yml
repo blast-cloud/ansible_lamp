@@ -7,9 +7,10 @@
 
 - name: changing file permission and ownership of directory
   file:
-    path: /var/www/iterum-business-portal/hasob/hasob-ecommerce-lib
+    path: /var/www/iterum-business-portal/vendor/hasob/hasob-ecommerce-lib
     mode: "0777"
     owner: root
+    group: root
 
 - name: Delete the tar file
   file:

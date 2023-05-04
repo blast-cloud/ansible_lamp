@@ -1,5 +1,5 @@
 ---
-- name: unarchiving module directory on server
+- name: unarchiving quick queue module directory on server
   unarchive:
     src: /var/www/hasob-foundation-core-bs-5.tar.gz 
     dest: /var/www/quick-queue-portal/vendor/hasob/
@@ -7,7 +7,7 @@
 
 - name: changing file permission and ownership of directory
   file:
-    path: /var/www/quick-queue-portal/vendor/hasob//hasob-foundation-core-bs-5*
+    path: /var/www/quick-queue-portal/vendor/hasob/hasob-foundation-core-bs-5*
     mode: "0777"
     owner: root
     group: root

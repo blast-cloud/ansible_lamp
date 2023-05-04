@@ -1,0 +1,18 @@
+---
+- name: unarchiving workflow engine module directory on server
+  unarchive:
+    src: /var/www/hasob-workflow-engine-bs-5.tar.gz 
+    dest: /var/www/tetfund-bi-portal/vendor/hasob/
+    remote_src: yes
+
+- name: changing file permission and ownership of directory
+  file:
+    path: /var/www/quick-queue-portal/vendor/hasob/hasob-workflow-engine-bs-5*
+    mode: "0777"
+    owner: root
+    group: root
+
+- name: Delete the tar file
+  file:
+    path: /var/www/hasob-workflow-engine-bs-5.tar.gz
+    state: absent

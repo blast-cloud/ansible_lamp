@@ -1,18 +1,18 @@
 ---
-- name: unarchiving edms-engine module directory on server
+- name: unarchiving workflow engine module directory on server
   unarchive:
-    src: /var/www/hasob-edms-engine-bs-5.tar.gz 
+    src: /var/www/hasob-workflow-engine-bs-5.tar.gz 
     dest: /var/www/tetfund-iterum-portal/vendor/hasob/
     remote_src: yes
 
 - name: changing file permission and ownership of directory
   file:
-    path: /var/www/tetfund-iterum-portal/vendor/hasob/hasob-edms-engine-bs-5*
+    path: /var/www/tetfund-iterum-portal/vendor/hasob/hasob-workflow-engine-bs-5*
     mode: "0777"
     owner: root
     group: root
 
 - name: Delete the tar file
   file:
-    path: /var/www/hasob-edms-engine-bs-5.tar.gz
+    path: /var/www/hasob-workflow-engine-bs-5.tar.gz
     state: absent
