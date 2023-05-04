@@ -1,5 +1,5 @@
 ---
-- name: unarchiving  module directory on server
+- name: unarchiving foundation core module directory on server
   unarchive:
     src: /var/www/hasob-foundation-core-bs-5.tar.gz 
     dest: /var/www/tetfund-iterum-portal/vendor/hasob/
