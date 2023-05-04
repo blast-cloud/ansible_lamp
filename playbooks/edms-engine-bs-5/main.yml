@@ -1,5 +1,5 @@
 ---
-- name: Updating ecommerce-lib module
+- name: Updating modules
   hosts: target
   become: yes
   tasks: 

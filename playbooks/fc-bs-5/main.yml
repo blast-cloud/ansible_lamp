@@ -60,3 +60,16 @@
       include_role:
         name: impact
       when: folder_info.stat.exists
+
+
+    - name: Check if quickq server
+      stat:
+        path: /var/www/quick-queue-portal
+      register: folder_info
+
+
+    - name: Run tasks for server
+      include_role:
+        name: quickq
+      when: folder_info.stat.exists
+
