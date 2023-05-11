@@ -10,7 +10,7 @@ git pull
 cd ~/hasob/
 
 # Set the input file or directory and output tarball name
-INPUT_DIR="~/hasob/tetfund-astd-module"
+INPUT_DIR="./tetfund-astd-module"
 OUTPUT_TAR_DIR="tetfund-astd-module.tar.gz"
 
 # Create the tar file

@@ -10,7 +10,7 @@ git pull
 cd ~/hasob/
 
 # Set the input file or directory and output tarball name
-INPUT_DIR="~/hasob/tetfund-beneficiary-mgt-module"
+INPUT_DIR="./tetfund-beneficiary-mgt-module"
 OUTPUT_TAR_DIR="tetfund-beneficiary-mgt-module.tar.gz"
 
 # Create the tar file

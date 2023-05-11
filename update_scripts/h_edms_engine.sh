@@ -10,7 +10,7 @@ git pull
 cd ~/hasob/
 
 # Set the input file or directory and output tarball name
-INPUT_DIR="~/hasob/hasob-edms-engine-bs-5"
+INPUT_DIR="./hasob-edms-engine-bs-5"
 OUTPUT_TAR_DIR="hasob-edms-engine-bs-5.tar.gz"
 
 # Create the tar file

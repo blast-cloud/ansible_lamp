@@ -17,11 +17,11 @@ OUTPUT_TAR_DIR_1="tetfund-thesis-digitilization-module.tar.gz"
 
 
 # Create the tar file
-# TERAS
 tar -czf "$OUTPUT_TAR_DIR_1" "$INPUT_DIR_1"
 
 
 # Transfer to server
+# TERAS
 scp -r "$OUTPUT_TAR_DIR_1" root@109.74.199.54:/var/www/
 
 # change directory 

@@ -10,7 +10,7 @@ git pull
 cd ~/hasob/
 
 # Set the input file or directory and output tarball name
-INPUT_DIR="~/hasob/tetfund-intervention-module"
+INPUT_DIR="./tetfund-intervention-module"
 OUTPUT_TAR_DIR="tetfund-intervention-module.tar.gz"
 
 # Create the tar file

@@ -10,7 +10,7 @@ git pull
 cd ~/hasob/
 
 # Set the input file or directory and output tarball name
-INPUT_DIR="~/hasob/tetfund-bi-submission-module"
+INPUT_DIR="./tetfund-bi-submission-module"
 OUTPUT_TAR_DIR="tetfund-bi-submission-module.tar.gz"
 
 # Create the tar file
