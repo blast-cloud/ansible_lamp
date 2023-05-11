@@ -1,0 +1,48 @@
+---
+- name: extract file to remote
+  hosts: target
+  become: true
+  tasks: 
+    - name: unarchive app dir on remote
+      unarchive:
+        src: /var/www/app.tar.gz 
+        dest: /var/www/tetfund-iterum-portal/
+        remote_src: yes
+
+    - name: unarchive resources dir on remote
+      unarchive:
+        src: /var/www/resources.tar.gz
+        dest: /var/www/tetfund-iterum-portal/
+        remote_src: yes
+
+
+    - name: unarchive routes dir on remote
+      unarchive:
+        src: /var/www/routes.tar.gz
+        dest: /var/www/tetfund-iterum-portal/
+        remote_src: yes
+
+
+
+    - name: change file permission and ownership for app dir
+      file:
+        path: /var/www/tetfund-iterum-portal/app
+        mode: "0777"
+        owner: root
+
+
+    - name: change file permission and ownership for resources dir
+      file:
+        path: /var/www/tetfund-iterum-portal/resources
+        mode: "0777"
+        owner: root
+
+
+    - name: change file permission and ownership for routes
+      file:
+        path: /var/www/vtetfund-iterum-portal/routes
+        mode: "0777"
+        owner: root
+
+
+

@@ -1,0 +1,47 @@
+---
+- name: extract file to remote server
+  hosts: target
+  become: true
+  tasks: 
+    - name: unarchive app dir on remote
+      unarchive:
+        src: /var/www/app.tar.gz 
+        dest: /var/www/tetfund-thesis-digitilization-portal/
+        remote_src: yes
+
+    - name: unarchive resources dir on remote
+      unarchive:
+        src: /var/www/resources.tar.gz
+        dest: /var/www/tetfund-thesis-digitilization-portal/
+        remote_src: yes
+
+
+    - name: unarchive routes dir on remote
+      unarchive:
+        src: /var/www/routes.tar.gz
+        dest: /var/www/tetfund-thesis-digitilization-portal/
+
+
+
+    - name: change file permission and ownership for app dir
+      file:
+        path: /var/www/tetfund-thesis-digitilization-portal/app
+        mode: "0777"
+        owner: root
+
+
+    - name: change file permission and ownership for resources dir
+      file:
+        path: /var/www/tetfund-thesis-digitilization-portal/resources
+        mode: "0777"
+        owner: root
+
+
+    - name: change file permission and ownership for routes
+      file:
+        path: /var/www/vtetfund-thesis-digitilization-portal/routes
+        mode: "0777"
+        owner: root
+
+
+
