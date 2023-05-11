@@ -1,0 +1,22 @@
+---
+- name: Updating Tetfund intervention module
+  hosts: target
+  become: yes
+  tasks: 
+    - name: Unarchiving directory on server
+      unarchive:
+        src: /var/www/tetfund-intervention-module.tar.gz 
+        dest: /var/www/tetfund-iterum-portal/vendor/hasob/
+        remote_src: yes
+
+    - name: Changing file permission and ownership of directory
+      file:
+        path: /var/www/tetfund-iterum-portal/vendor/hasob/tetfund-intervention-module*
+        mode: "0777"
+        owner: root
+        group: root
+
+    - name: Delete the tar file
+      file:
+        path: /var/www/tetfund-intervention-module.tar.gz
+        state: absent

@@ -21,14 +21,15 @@ tar -czf "$OUTPUT_TAR_DIR_1" "$INPUT_DIR_1"
 
 
 # Transfer to server
+# TERAS
 scp -r "$OUTPUT_TAR_DIR_1" root@109.74.199.54:/var/www/
 
 # change directory 
-cd /etc/ansible/playbooks/
+cd /etc/ansible/playbooks/thesis-ingest-module
 
 
 # Run the ansible playbook
-ansible-playbook thesis-ingest-module.yml -i inventory
+ansible-playbook main.yml -i inventory
 
 #change directory 
 cd ~/hasob

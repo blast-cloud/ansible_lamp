@@ -1,0 +1,22 @@
+---
+- name: Updating Hasob Lab Manager module
+  hosts: target
+  become: yes
+  tasks: 
+    - name: unarchiving directory on server
+      unarchive:
+        src: /var/www/hasob-labmanager-module.tar.gz 
+        dest: /var/www/iterum-business-portal/vendor/hasob/
+        remote_src: yes
+
+    - name: changing file permission and ownership of directory
+      file:
+        path: /var/www/iterum-business-portal/vendor/hasob/hasob-labmanager-module*
+        mode: "0777"
+        owner: root
+        group: root
+
+    - name: Delete the tar file
+      file:
+        path: /var/www/hasob-labmanager-module.tar.gz
+        state: absent

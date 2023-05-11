@@ -1,18 +1,18 @@
 ---
 - name: unarchiving directory on server
   unarchive:
-    src: /var/www/hasob-edms-engine-bs-5.tar.gz 
+    src: /var/www/tetfund-beneficiary-mgt-module.tar.gz 
     dest: /var/www/tetfund-iterum-portal/vendor/tetfund/
     remote_src: yes
 
 - name: changing file permission and ownership of directory
   file:
-    path: /var/www/tetfund-iterum-portal/vendor/tetfund/hasob-edms-engine-bs-5*
+    path: /var/www/tetfund-iterum-portal/vendor/tetfund/tetfund-beneficiary-mgt-module*
     mode: "0777"
     owner: root
     group: root
 
 - name: Delete the tar file
   file:
-    path: /var/www/hasob-edms-engine-bs-5.tar.gz
+    path: /var/www/tetfund-beneficiary-mgt-module.tar.gz
     state: absent

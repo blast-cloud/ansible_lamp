@@ -1,5 +1,5 @@
 ---
-- name: unarchiving quick queue module directory on server
+- name: unarchiving directory on server
   unarchive:
     src: /var/www/hasob-foundation-core-bs-5.tar.gz 
     dest: /var/www/tetfund-thesis-digitilization-portal/vendor/hasob/

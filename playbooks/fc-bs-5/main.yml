@@ -62,6 +62,7 @@
       when: folder_info.stat.exists
 
 
+
     - name: Check if quickq server
       stat:
         path: /var/www/quick-queue-portal
@@ -72,4 +73,3 @@
       include_role:
         name: quickq
       when: folder_info.stat.exists
-

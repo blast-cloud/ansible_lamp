@@ -1,0 +1,18 @@
+---
+- name: Unarchiving directory on server
+  unarchive:
+    src: /var/www/tetfund-impact-module.tar.gz 
+    dest: /var/www/tetfund-iterum-portal/vendor/tetfund/
+    remote_src: yes
+
+- name: Changing file permission and ownership of directory
+  file:
+    path: /var/www/tetfund-iterum-portal/vendor/tetfund/tetfund-impact-module*
+    mode: "0777"
+    owner: root
+    group: root
+
+- name: Delete the tar file
+  file:
+    path: /var/www/tetfund-impact-module.tar.gz
+    state: absent
