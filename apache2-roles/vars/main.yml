@@ -1,5 +1,0 @@
----
-# vars file for apache2-roles
-#
-domain_name: lms
-document_root: /var/www/

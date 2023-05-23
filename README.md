@@ -1,2 +1,2 @@
 # ansible_lamp
-playbook to install lampstack
+playbook and scipt to update subset of servers (LMS application)
